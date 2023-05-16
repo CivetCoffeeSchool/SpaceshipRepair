@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 124651004}
   - component: {fileID: 124651003}
   - component: {fileID: 124651002}
+  - component: {fileID: 124651005}
   m_Layer: 0
   m_Name: Item
   m_TagString: Item
@@ -302,6 +303,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124651005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124651001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9bfceb950f3cd458e9b19b7d9b4993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpText: {fileID: 0}
 --- !u!1 &385185664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1099,7 @@ GameObject:
   - component: {fileID: 2126621754}
   - component: {fileID: 2126621757}
   - component: {fileID: 2126621758}
+  - component: {fileID: 2126621759}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1224,3 +1239,16 @@ MonoBehaviour:
   jumpSoundEffect: {fileID: 0}
   movespeed: 6
   jumpforce: 8
+--- !u!114 &2126621759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126621753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9bfceb950f3cd458e9b19b7d9b4993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpText: {fileID: 0}
