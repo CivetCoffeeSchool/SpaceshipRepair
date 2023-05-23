@@ -3,50 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Item_Handler : MonoBehaviour
+public class Item_Depositor : MonoBehaviour
 {
     public Item_Collector collector;
-    public bool holdsItem;
-
-
-    [SerializeField] private Text DepositText;
-    private GameObject Item;
+    [SerializeField] private GameObject DepositText;
+    private GameObject temp;
+    [SerializeField]private GameObject Craft;
     private bool DepositAllowed;
 
+    public Sprite[] CraftSprites = new Sprite[4];
 
     private void Start()
     {
-        holdsItem = collector.holdsItem;
+        collector.holdsItem = collector.holdsItem;
         DepositText.gameObject.SetActive(false);
     }
     private void Update()
     {
-        if (DepositAllowed && Input.GetKeyDown(KeyCode.F) && holdsItem)
+        if (DepositAllowed && Input.GetKeyDown(KeyCode.F) && collector.holdsItem)
         {
+            collector.holdsItem = false;
             Deposit();
-            holdsItem = true;
         };
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("Craft"))
+        if (collision.gameObject.tag.Equals("Craft"))
         {
-            Item = collision.gameObject;
-            DepositText.gameObject.SetActive(true);
+            if(collector.holdsItem)
+                DepositText.gameObject.SetActive(true);
             DepositAllowed = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("Craft"))
+        if (collision.gameObject.tag.Equals("Craft"))
         {
-            Item = null;
             DepositText.gameObject.SetActive(false);
             DepositAllowed = false;
         }
     }
     private void Deposit()
     {
-        holdsItem = false;
+        Craft.GetComponent<SpriteRenderer>().sprite = CraftSprites[collector.ItemCounter]; //Updates Sprite of Craft
+        collector.ItemSlots[collector.ItemCounter].GetComponent<Image>().color = Color.green;
+        collector.ItemCounter++;
+        collector.move.jumpforce = 8;
+        collector.move.movespeed = 6;
     }
+
+
 }
