@@ -6,7 +6,7 @@ public class Player_Movement : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-    //private Animator anim;
+    private Animator anim;
     private SpriteRenderer sprite;
     private BoxCollider2D col;
 
@@ -69,7 +69,7 @@ public class Player_Movement : MonoBehaviour
         {
             state = MovementState.falling;
         }
-        //anim.SetInteger("State", (int)state);
+        anim.SetInteger("State", (int)state);
     }
 
     private bool IsGrounded()
