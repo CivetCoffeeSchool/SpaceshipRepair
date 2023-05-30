@@ -6,7 +6,7 @@ public class Player_Movement : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-    //private Animator anim;
+    private Animator anim;
     private SpriteRenderer sprite;
     private BoxCollider2D col;
 
@@ -16,8 +16,8 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private AudioSource jumpSoundEffect;
 
     private float dirX;
-    [SerializeField] private float movespeed = 6f;
-    [SerializeField] private float jumpforce = 8f;
+    [SerializeField] public float movespeed = 6f;
+    [SerializeField] public float jumpforce = 8f;
 
     private void Start()
     {
@@ -69,7 +69,7 @@ public class Player_Movement : MonoBehaviour
         {
             state = MovementState.falling;
         }
-        //anim.SetInteger("State", (int)state);
+        anim.SetInteger("State", (int)state);
     }
 
     private bool IsGrounded()
