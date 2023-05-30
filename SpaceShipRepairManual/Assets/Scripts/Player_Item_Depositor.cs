@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Player_Item_Depositor : MonoBehaviour
 {
+    [SerializeField] public Prograssbar_Unload Air;
     public Player_Item_Collector collector;
     [SerializeField] private GameObject DepositText;
     private GameObject temp;
@@ -30,9 +31,14 @@ public class Player_Item_Depositor : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Craft"))
         {
-            if(collector.holdsItem)
+            if (collector.holdsItem)
                 DepositText.gameObject.SetActive(true);
             DepositAllowed = true;
+            Air.refill = true;
+        }
+        else if (collision.gameObject.tag.Equals("Refill")) 
+        {
+            Air.refill = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -41,6 +47,11 @@ public class Player_Item_Depositor : MonoBehaviour
         {
             DepositText.gameObject.SetActive(false);
             DepositAllowed = false;
+            Air.refill = false;
+        }
+        else if (collision.gameObject.tag.Equals("Refill"))
+        {
+            Air.refill = false;
         }
     }
     private void Deposit()
