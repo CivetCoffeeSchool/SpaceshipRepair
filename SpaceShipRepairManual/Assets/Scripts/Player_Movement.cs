@@ -22,7 +22,7 @@ public class Player_Movement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         col = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -39,7 +39,7 @@ public class Player_Movement : MonoBehaviour
             //jumpSoundEffect.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
         }
-        //UpdateAnimationState();
+        UpdateAnimationState();
 
     }
     private void UpdateAnimationState()
@@ -48,12 +48,12 @@ public class Player_Movement : MonoBehaviour
         if (dirX > 0f)
         {
             state = MovementState.running;
-            sprite.flipX = false;
+            sprite.flipX = true;
         }
         else if (dirX < 0f)
         {
             state = MovementState.running;
-            sprite.flipX = true;
+            sprite.flipX = false;
         }
         else
         {
@@ -69,7 +69,7 @@ public class Player_Movement : MonoBehaviour
         {
             state = MovementState.falling;
         }
-        anim.SetInteger("State", (int)state);
+        anim.SetInteger("status", (int)state);
     }
 
     private bool IsGrounded()
