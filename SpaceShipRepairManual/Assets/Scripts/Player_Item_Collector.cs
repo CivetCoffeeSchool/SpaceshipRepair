@@ -54,7 +54,7 @@ public class Player_Item_Collector : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("Item"))
+        if (collision.gameObject.tag.Equals("Item"))
         {
             pickUpText.gameObject.SetActive(false);
             pickUpAllowed = false;
