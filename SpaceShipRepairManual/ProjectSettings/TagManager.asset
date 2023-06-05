@@ -7,6 +7,9 @@ TagManager:
   - Item
   - Trap
   - Craft
+  - Lever
+  - Ladder
+  - Refill
   layers:
   - Default
   - TransparentFX
